@@ -27,6 +27,11 @@ public class InventoryService {
         }.getType());
     }
 
+    public InventoryDTO getInventoryId(int inventoryId) {
+        Inventory inventory = inventoryRepo.getInventoryId(inventoryId);
+        return modelMapper.map(inventory, InventoryDTO.class);
+    }
+
     public String addInventory(InventoryDTO inventoryDTO) {
         Inventory inventory = modelMapper.map(inventoryDTO, Inventory.class);
         inventoryRepo.save(inventory);
@@ -39,7 +44,7 @@ public class InventoryService {
         return inventoryDTO;
     }
 
-    public String deleteInventory(int  inventoryId) {
+    public String deleteInventory(int inventoryId) {
         inventoryRepo.deleteById(inventoryId);
         return "Inventory deleted successfully";
     }

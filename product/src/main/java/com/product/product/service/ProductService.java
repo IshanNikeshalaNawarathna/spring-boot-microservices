@@ -28,19 +28,24 @@ public class ProductService {
         }.getType());
     }
 
-    public String addProduct(ProductDTO productDTO){
-        Product product = modelMapper.map(productDTO,Product.class);
+    public ProductDTO productItemId(int productItemId) {
+        Product product = productRepo.getProductItemId(productItemId);
+        return modelMapper.map(product, ProductDTO.class);
+    }
+
+    public String addProduct(ProductDTO productDTO) {
+        Product product = modelMapper.map(productDTO, Product.class);
         productRepo.save(product);
         return "Product added Successfully";
     }
 
-    public ProductDTO updateProduct(ProductDTO productDTO){
+    public ProductDTO updateProduct(ProductDTO productDTO) {
         Product product = modelMapper.map(productDTO, Product.class);
         productRepo.save(product);
         return productDTO;
     }
 
-    public String deleteProduct(int productId){
+    public String deleteProduct(int productId) {
         productRepo.deleteById(productId);
         return "Product deleted Successfully";
     }

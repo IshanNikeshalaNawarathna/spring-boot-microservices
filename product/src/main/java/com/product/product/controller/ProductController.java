@@ -20,18 +20,23 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
+    @GetMapping(value = "/productitemid/{productId}")
+    private ProductDTO getProductById(@PathVariable int productId) {
+        return productService.productItemId(productId);
+    }
+
     @PostMapping(value = "/addproduct")
     private String addProduct(@RequestBody ProductDTO productDTO) {
         return productService.addProduct(productDTO);
     }
 
     @PutMapping(value = "/updateproduct")
-    private ProductDTO updateProduct(@RequestBody ProductDTO productDTO){
+    private ProductDTO updateProduct(@RequestBody ProductDTO productDTO) {
         return productService.updateProduct(productDTO);
     }
 
     @DeleteMapping(value = "/deleteproduct/{productId}")
-    private String deleteProduct(@PathVariable int productId){
+    private String deleteProduct(@PathVariable int productId) {
         return productService.deleteProduct(productId);
     }
 

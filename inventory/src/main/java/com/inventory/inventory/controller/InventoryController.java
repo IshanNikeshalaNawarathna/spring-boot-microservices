@@ -20,18 +20,23 @@ public class InventoryController {
         return inventoryService.getAllInventory();
     }
 
+    @GetMapping(value = "/getitembyid/{itemId}")
+    private InventoryDTO getItemById(@PathVariable int itemId) {
+        return inventoryService.getInventoryId(itemId);
+    }
+
     @PostMapping(value = "/addinventory")
-    private String addInventory(@RequestBody InventoryDTO inventoryDTO){
+    private String addInventory(@RequestBody InventoryDTO inventoryDTO) {
         return inventoryService.addInventory(inventoryDTO);
     }
 
     @PutMapping(value = "/updateinventory")
-    public InventoryDTO updateInventory(@RequestBody InventoryDTO inventoryDTO){
+    public InventoryDTO updateInventory(@RequestBody InventoryDTO inventoryDTO) {
         return inventoryService.updateInventory(inventoryDTO);
     }
 
     @DeleteMapping(value = "/deleteiventory/{inventoryId}")
-    private String deleteInventory(@PathVariable int inventoryId){
+    private String deleteInventory(@PathVariable int inventoryId) {
         return inventoryService.deleteInventory(inventoryId);
     }
 
